@@ -81,18 +81,6 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
         }
     }
 
-    private void setLocationForStaticAssets(WebServerFactory server) {
-        if (server instanceof ConfigurableServletWebServerFactory) {
-            ConfigurableServletWebServerFactory servletWebServer = (ConfigurableServletWebServerFactory) server;
-            File root;
-            String prefixPath = resolvePathPrefix();
-            root = new File(prefixPath + "target/classes/static/");
-            if (root.exists() && root.isDirectory()) {
-                servletWebServer.setDocumentRoot(root);
-            }
-        }
-    }
-
     /**
      * Resolve path prefix to static resources.
      */
@@ -111,6 +99,18 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
             return "";
         }
         return extractedPath.substring(0, extractionEndIndex);
+    }
+
+    private void setLocationForStaticAssets(WebServerFactory server) {
+        if (server instanceof ConfigurableServletWebServerFactory) {
+//            ConfigurableServletWebServerFactory servletWebServer = (ConfigurableServletWebServerFactory) server;
+//            File root;
+            String prefixPath = resolvePathPrefix();
+            root = new File(prefixPath + "target/classes/static/");
+            if (root.exists() && root.isDirectory()) {
+                servletWebServer.setDocumentRoot(root);
+            }
+        }
     }
 
     /**
