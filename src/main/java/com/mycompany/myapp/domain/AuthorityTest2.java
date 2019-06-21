@@ -17,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "jhi_authority")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Authority implements Serializable {
+public class AuthorityTest2 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -53,7 +53,7 @@ public class Authority implements Serializable {
 
     @Override
     public String toString() {
-        return "Authority{" +
+        return "AuthorityTest2{" +
             "name='" + name + '\'' +
             "}";
     }

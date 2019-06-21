@@ -24,15 +24,16 @@ public class LoggingConfiguration {
                                 JHipsterProperties jHipsterProperties,
                                 ObjectMapper mapper) throws JsonProcessingException {
 
-        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
-
+//        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
         Map<String, String> map = new HashMap<>();
+
         map.put("app_name", appName);
-        map.put("app_port", serverPort);
-        String customFields = mapper.writeValueAsString(map);
+//        map.put("app_port", serverPort);
+
 
         JHipsterProperties.Logging loggingProperties = jHipsterProperties.getLogging();
         JHipsterProperties.Logging.Logstash logstashProperties = loggingProperties.getLogstash();
+        String customFields = mapper.writeValueAsString(map);
 
         if (loggingProperties.isUseJsonFormat()) {
             addJsonConsoleAppender(context, customFields);
