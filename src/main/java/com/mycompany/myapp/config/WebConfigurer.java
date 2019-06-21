@@ -44,14 +44,14 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
         this.jHipsterProperties = jHipsterProperties;
     }
 
-    @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        if (env.getActiveProfiles().length != 0) {
-            log.info("Web application configuration, using profiles: {}", (Object[]) env.getActiveProfiles());
-        }
+
         EnumSet<DispatcherType> disps = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.ASYNC);
         if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_PRODUCTION))) {
             initCachingHttpHeadersFilter(servletContext, disps);
+        }
+        if (env.getActiveProfiles().length != 0) {
+            log.info("Web application configuration, using profiles: {}", (Object[]) env.getActiveProfiles());
         }
         if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
             initH2Console(servletContext);

@@ -17,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "jhi_authority")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Authority implements Serializable {
+public class AuthorityTest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,12 +37,14 @@ public class Authority implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
         if (!(o instanceof Authority)) {
             return false;
         }
+
+        if (this == o) {
+            return true;
+        }
+
         return Objects.equals(name, ((Authority) o).name);
     }
 
@@ -53,7 +55,7 @@ public class Authority implements Serializable {
 
     @Override
     public String toString() {
-        return "Authority{" +
+        return "AuthorityTest{" +
             "name='" + name + '\'' +
             "}";
     }
