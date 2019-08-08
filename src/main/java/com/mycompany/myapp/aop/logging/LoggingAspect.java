@@ -23,6 +23,7 @@ import java.util.Arrays;
 @Slf4j
 @Aspect
 public class LoggingAspect {
+    //여기 수정은 GIT5에서 작성한 코드임.
     private final Environment env;
 
     public LoggingAspect(Environment env) {
