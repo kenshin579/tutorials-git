@@ -20,11 +20,9 @@ import java.util.Arrays;
  *
  * By default, it only runs with the "dev" profile.
  */
+@Slf4j
 @Aspect
 public class LoggingAspect {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
-
     private final Environment env;
 
     public LoggingAspect(Environment env) {
