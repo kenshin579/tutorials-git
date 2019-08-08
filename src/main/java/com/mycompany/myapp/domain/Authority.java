@@ -36,17 +36,6 @@ public class Authority implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Authority)) {
-            return false;
-        }
-        return Objects.equals(name, ((Authority) o).name);
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hashCode(name);
     }
