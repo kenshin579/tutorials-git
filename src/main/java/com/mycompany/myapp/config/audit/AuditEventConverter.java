@@ -18,9 +18,6 @@ public class AuditEventConverter {
      * @return the converted list.
      */
     public List<AuditEvent> convertToAuditEvent(Iterable<PersistentAuditEvent> persistentAuditEvents) {
-        if (persistentAuditEvents == null) {
-            return Collections.emptyList();
-        }
         List<AuditEvent> auditEvents = new ArrayList<>();
         for (PersistentAuditEvent persistentAuditEvent : persistentAuditEvents) {
             auditEvents.add(convertToAuditEvent(persistentAuditEvent));
