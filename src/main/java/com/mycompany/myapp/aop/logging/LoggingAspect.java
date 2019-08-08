@@ -58,14 +58,8 @@ public class LoggingAspect {
      */
     @AfterThrowing(pointcut = "applicationPackagePointcut() && springBeanPointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
-            log.error("Exception in {}.{}() with cause = \'{}\' and exception = \'{}\'", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), e.getCause() != null? e.getCause() : "NULL", e.getMessage(), e);
-
-        } else {
-            log.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), e.getCause() != null? e.getCause() : "NULL");
-        }
+        log.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
+            joinPoint.getSignature().getName(), e.getCause() != null? e.getCause() : "NULL");
     }
 
     /**
@@ -77,10 +71,6 @@ public class LoggingAspect {
      */
     @Around("applicationPackagePointcut() && springBeanPointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        if (log.isDebugEnabled()) {
-            log.debug("Enter: {}.{}() with argument[s] = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
-        }
         try {
            //debug
         } catch (IllegalArgumentException e) {
