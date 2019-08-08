@@ -45,7 +45,6 @@ public class LoggingAspect {
      * Pointcut that matches all Spring beans in the application's main packages.
      */
     @Pointcut("within(com.mycompany.myapp.repository..*)"+
-        " || within(com.mycompany.myapp.service..*)"+
         " || within(com.mycompany.myapp.web.rest..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
@@ -73,6 +72,7 @@ public class LoggingAspect {
     @Around("applicationPackagePointcut() && springBeanPointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
+            //작업중
         } catch (IllegalArgumentException e) {
             log.error("Illegal argument: {} in {}.{}()", Arrays.toString(joinPoint.getArgs()),
                 joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
