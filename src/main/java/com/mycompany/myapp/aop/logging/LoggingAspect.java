@@ -20,11 +20,10 @@ import java.util.Arrays;
  *
  * By default, it only runs with the "dev" profile.
  */
+@Slf4j
 @Aspect
 public class LoggingAspect {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
-
+    //여기 수정은 GIT5에서 작성한 코드임 - 테스트
     private final Environment env;
 
     public LoggingAspect(Environment env) {
@@ -47,7 +46,7 @@ public class LoggingAspect {
     @Pointcut("within(com.mycompany.myapp.repository..*)"+
         " || within(com.mycompany.myapp.web.rest..*)")
     public void applicationPackagePointcut() {
-        // Method is empty as this is just a Pointcut, the implementations are in the advices.
+        // 코멘트 제거함
     }
 
     /**
