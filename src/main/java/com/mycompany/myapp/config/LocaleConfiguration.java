@@ -17,11 +17,4 @@ public class LocaleConfiguration implements WebMvcConfigurer {
         cookieLocaleResolver.setCookieName("NG_TRANSLATE_LANG_KEY");
         return cookieLocaleResolver;
     }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("language");
-        registry.addInterceptor(localeChangeInterceptor);
-    }
 }
