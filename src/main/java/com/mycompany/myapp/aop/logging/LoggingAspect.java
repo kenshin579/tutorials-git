@@ -20,11 +20,9 @@ import java.util.Arrays;
  *
  * By default, it only runs with the "dev" profile.
  */
+@Slf4j
 @Aspect
 public class LoggingAspect {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
-
     private final Environment env;
 
     public LoggingAspect(Environment env) {
@@ -83,12 +81,7 @@ public class LoggingAspect {
                 joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
         }
         try {
-            Object result = joinPoint.proceed();
-            if (log.isDebugEnabled()) {
-                log.debug("Exit: {}.{}() with result = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                    joinPoint.getSignature().getName(), result);
-            }
-            return result;
+           //debug
         } catch (IllegalArgumentException e) {
             log.error("Illegal argument: {} in {}.{}()", Arrays.toString(joinPoint.getArgs()),
                 joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());

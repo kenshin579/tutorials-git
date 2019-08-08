@@ -18,9 +18,6 @@ public class AuditEventConverter {
      * @return the converted list.
      */
     public List<AuditEvent> convertToAuditEvent(Iterable<PersistentAuditEvent> persistentAuditEvents) {
-        if (persistentAuditEvents == null) {
-            return Collections.emptyList();
-        }
         List<AuditEvent> auditEvents = new ArrayList<>();
         for (PersistentAuditEvent persistentAuditEvent : persistentAuditEvents) {
             auditEvents.add(convertToAuditEvent(persistentAuditEvent));
@@ -35,11 +32,6 @@ public class AuditEventConverter {
      * @return the converted list.
      */
     public AuditEvent convertToAuditEvent(PersistentAuditEvent persistentAuditEvent) {
-        if (persistentAuditEvent == null) {
-            return null;
-        }
-        return new AuditEvent(persistentAuditEvent.getAuditEventDate(), persistentAuditEvent.getPrincipal(),
-            persistentAuditEvent.getAuditEventType(), convertDataToObjects(persistentAuditEvent.getData()));
     }
 
     /**
