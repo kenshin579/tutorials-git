@@ -12,6 +12,8 @@ import java.util.*;
 public class AuditEventConverter {
 
     /**
+     * working-branch에서의 작업내용.
+     *
      * Convert a list of {@link PersistentAuditEvent}s to a list of {@link AuditEvent}s.
      *
      * @param persistentAuditEvents the list to convert.
