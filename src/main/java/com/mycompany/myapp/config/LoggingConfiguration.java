@@ -16,6 +16,7 @@ import static io.github.jhipster.config.logging.LoggingUtils.*;
 /*
  * Configures the console and Logstash log appenders from the app properties
  */
+@Slf4j
 @Configuration
 public class LoggingConfiguration {
 
@@ -23,8 +24,6 @@ public class LoggingConfiguration {
                                 @Value("${server.port}") String serverPort,
                                 JHipsterProperties jHipsterProperties,
                                 ObjectMapper mapper) throws JsonProcessingException {
-
-        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
         Map<String, String> map = new HashMap<>();
         map.put("app_name", appName);
