@@ -28,4 +28,8 @@ public final class DefaultProfileUtil {
         defProperties.put(SPRING_PROFILE_DEFAULT, JHipsterConstants.SPRING_PROFILE_DEVELOPMENT);
         app.setDefaultProperties(defProperties);
     }
+
+    public static void deleteDefaultProfile(SpringApplication app) {
+        app.delete(defProperties);
+    }
 }
