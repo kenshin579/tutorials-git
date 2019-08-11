@@ -20,8 +20,6 @@ import java.util.Arrays;
  *
  * By default, it only runs with the "dev" profile.
  */
-@Slf4j
-@Aspect
 public class LoggingAspect {
     //여기 수정은 GIT5에서 작성한 코드임 - 테스트
     private final Environment env;
