@@ -19,7 +19,7 @@ import java.util.Arrays;
  * Aspect for logging execution of service and repository Spring components.
  *
  * By default, it only runs with the "dev" profile.
- * commit #1
+ * commit #1 -1
  */
 @Slf4j
 @Aspect
