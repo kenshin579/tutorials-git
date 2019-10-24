@@ -2,6 +2,7 @@ package com.mycompany.myapp.config;
 
 /**
  * Application constants.
+ * commit #4
  */
 public final class Constants {
     // Regex for acceptable logins
