@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 /**
- * commit #3
+ * commit #3 -3
  */
 @Configuration
 public class LocaleConfiguration implements WebMvcConfigurer {
