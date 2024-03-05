@@ -1,0 +1,34 @@
+name: Test Github Action
+on:
+  push:
+    branches: [ dev, qa, stage ]
+  workflow_dispatch:
+    inputs:
+      phase:
+        type: choice
+        description: 'Phase'
+        default: dev
+        options:
+          - dev
+          - qa
+          - stage
+          - 2ndc
+          - real
+          - nle
+
+jobs:
+  install:
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Test Github
+        env:
+          PHASE: ${{ github.event.inputs.phase }}
+        run: |
+          echo "phase: ${{ github.event.inputs.phase }}"
+          echo "github.event_name: ${{ github.event_name }}"
+          echo "github.event.pull_request.base.ref: ${{ github.event.pull_request.base.ref }}"
+          echo "github.head_ref: ${{ github.head_ref }}"
+          echo "github.base_ref: ${{ github.base_ref }}"
