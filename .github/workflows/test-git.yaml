@@ -24,6 +24,7 @@ jobs:
       - name: Test Github
         env:
           PHASE: ${{ github.event.inputs.phase }}
+          TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           echo "phase: ${{ github.event.inputs.phase }}"
           echo "github.env: ${{ github.env }}"
@@ -33,3 +34,13 @@ jobs:
           echo "github.base_ref: ${{ github.base_ref }}"
           echo "github.head_ref: ${{ github.head_ref }}"
           echo "github.ref_name: ${{ github.ref_name }}"
+          
+          if [[ "$PHASE" == "" ]]; then
+            if [[ "$TARGET_BRANCH" == "qa" ]]; then
+              echo "register based on $TARGET_BRANCH"
+            else
+              echo "else: $TARGET_BRANCH"
+            fi
+          else
+            echo "else $PHASE"
+          fi 
