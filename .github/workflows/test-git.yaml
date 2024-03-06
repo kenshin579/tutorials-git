@@ -1,7 +1,7 @@
 name: Test Github Action
 on:
   push:
-    branches: [ dev, qa, stage ]
+    branches: [ master, dev, qa, stage ]
   workflow_dispatch:
     inputs:
       phase:
@@ -28,7 +28,10 @@ jobs:
           PHASE: ${{ github.event.inputs.phase }}
         run: |
           echo "phase: ${{ github.event.inputs.phase }}"
+          echo "github.env: ${{ github.env }}"
+          echo "github.event: ${{ github.event }}"
           echo "github.event_name: ${{ github.event_name }}"
           echo "github.event.pull_request.base.ref: ${{ github.event.pull_request.base.ref }}"
-          echo "github.head_ref: ${{ github.head_ref }}"
           echo "github.base_ref: ${{ github.base_ref }}"
+          echo "github.head_ref: ${{ github.head_ref }}"
+          echo "github.ref_name: ${{ github.ref_name }}"
