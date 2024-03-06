@@ -12,9 +12,7 @@ on:
           - dev
           - qa
           - stage
-          - 2ndc
           - real
-          - nle
 
 jobs:
   build:
@@ -29,7 +27,7 @@ jobs:
         run: |
           echo "phase: ${{ github.event.inputs.phase }}"
           echo "github.env: ${{ github.env }}"
-          echo "github.event: ${{ github.event }}"
+          echo "github.event: ${{ toJSON(github.event0 }}"
           echo "github.event_name: ${{ github.event_name }}"
           echo "github.event.pull_request.base.ref: ${{ github.event.pull_request.base.ref }}"
           echo "github.base_ref: ${{ github.base_ref }}"
