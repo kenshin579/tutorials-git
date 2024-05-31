@@ -1,0 +1,14 @@
+name: Test Issue Close
+on:
+  issues:
+    types: [ closed ]
+
+jobs:
+  issue-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue Closed Action
+        run: |
+          echo "An Issue was closed"
+          labels=$(echo '${{ toJSON(github.event.issue.labels) }}' | jq -r '.[].name')
+          echo "Issue labels: $labels"
