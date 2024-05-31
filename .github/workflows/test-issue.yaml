@@ -12,3 +12,6 @@ jobs:
           echo "An Issue was closed"
           labels=$(echo '${{ toJSON(github.event.issue.labels) }}' | jq -r '.[].name')
           echo "Issue labels: $labels"
+
+#todo: tagging 생성하고 버전 없을 시킬 수 있어야 한다.
+#todo: script 실행이후 commit하고 pr 생성을 해야 함
