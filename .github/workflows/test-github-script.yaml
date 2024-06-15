@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
-      - name: Issue Closed Action 2
+        uses: actions/checkout@v3
+      - name: Issue Closed Action
         run: |
           echo "An Issue was closed"
           labels=$(echo '${{ toJSON(github.event.issue.labels) }}' | jq -r '.[].name')
