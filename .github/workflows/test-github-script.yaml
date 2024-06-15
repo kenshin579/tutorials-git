@@ -24,16 +24,16 @@ jobs:
             echo "NEW_BRANCH: $NEW_BRANCH"
           
             # create a new branch base on today date and time
-            git checkout -b $NEW_BRANCH
-            
-            # commit files
-            git add .
-            git commit -m "Update version"
+#            git checkout -b $NEW_BRANCH
+#
+#            # commit files
+#            git add .
+#            git commit -m "Update version"
           
             # push the remote
 #            git push origin $NEW_BRANCH
           
             # create pr
-            gh pr create --title "Update version" --body "This PR updates the version" --base master --head $NEW_BRANCH
+#            gh pr create --title "Update version" --body "This PR updates the version" --base master --head $NEW_BRANCH
           fi
         
