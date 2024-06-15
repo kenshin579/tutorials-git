@@ -9,8 +9,7 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-
-      - name: Issue Closed Action
+      - name: Issue Closed Action 2
         run: |
           echo "An Issue was closed"
           labels=$(echo '${{ toJSON(github.event.issue.labels) }}' | jq -r '.[].name')
