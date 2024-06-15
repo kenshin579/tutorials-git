@@ -1,7 +1,7 @@
 name: Test Issue Close
-#on:
-#  issues:
-#    types: [ closed ]
+on:
+  issues:
+    types: [ closed ]
 
 jobs:
   issue-closed:
