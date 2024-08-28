@@ -12,3 +12,9 @@ jobs:
           echo "An Issue was closed"
           labels=$(echo '${{ toJSON(github.event.issue.labels) }}' | jq -r '.[].name')
           echo "Issue labels: $labels"
+          
+          if echo "$labels" | grep -qw "real"; then
+            echo "Issue has real label"
+          else
+            echo "Issue does not have real label"
+          fi

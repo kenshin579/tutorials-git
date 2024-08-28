@@ -1,0 +1,38 @@
+name: Update Version and Create Pull Request
+on:
+  issues:
+    types: [ closed ]
+
+jobs:
+  issue-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+      - name: Issue Closed Action
+        run: |
+          echo "An Issue was closed"
+          labels=$(echo '${{ toJSON(github.event.issue.labels) }}' | jq -r '.[].name')
+          echo "Issue labels: $labels"
+          
+          if echo "$labels" | grep -qw "real"; then
+            chmod +x scripts/version.sh
+            ./scripts/version.sh
+            
+            NEW_BRANCH=update-version-$(date +'%Y-%m-%d-%H-%M-%S')
+            echo "NEW_BRANCH: $NEW_BRANCH"
+          
+            # create a new branch base on today date and time
+#            git checkout -b $NEW_BRANCH
+#
+#            # commit files
+#            git add .
+#            git commit -m "Update version"
+          
+            # push the remote
+#            git push origin $NEW_BRANCH
+          
+            # create pr
+#            gh pr create --title "Update version" --body "This PR updates the version" --base master --head $NEW_BRANCH
+          fi
+        
