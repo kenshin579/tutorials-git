@@ -1,0 +1,17 @@
+name: Test Calling Mock server
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Test Mock Server
+        run: |
+          cd scripts
+          chmod +x ./mock_server.sh
+          
+          ./mock_server.sh
