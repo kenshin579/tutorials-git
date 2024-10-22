@@ -4,7 +4,7 @@ on:
     branches: [ master ]
 
 jobs:
-  issue-closed:
+  add-comment:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
@@ -16,10 +16,15 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
             console.log(context)
+            echo "${{steps.set-result.outputs.result}}"
             
-            github.rest.issues.createComment({
+            echo "context: "
+            
+            var request = {
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: "pr 코멘트에 메시지가 넣어지는지 확인"
-            })
+            }
+            
+            github.rest.issues.createComment(request)
